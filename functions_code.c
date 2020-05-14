@@ -31,6 +31,7 @@ void func_code_pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *node = *stack;
 	size_t count = 0;
+	(void)line_number;
 
 	if (!stack)
 	{

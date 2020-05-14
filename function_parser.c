@@ -6,11 +6,12 @@ char *func_parser(stack_t *head, unsigned int num)
 	char *delim = "\n";
 	char *token = NULL, *array = NULL;
 	int i = 0;
+			 printf("son iguales");
 
 	 token = strtok(Var.linebuf, delim);
 	 if (token == NULL)
 		 return (NULL);
-	 if (strcmp(token, "push") == 0)
+	 if (strcmp(token, delim) == 0)
 	 {
 	        array = strtok(NULL, delim);
 		if (array == NULL)
@@ -35,8 +36,9 @@ char *func_parser(stack_t *head, unsigned int num)
 			continue;
 		}
 		else
+		{
 			int_Error(head, num);
-			printf("Error");
+		}
 
 	}
 	Var.node_num = atoi(array);

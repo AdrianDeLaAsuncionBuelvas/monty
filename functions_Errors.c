@@ -8,3 +8,13 @@ void int_Error(stack_t *head, unsigned int line_number)
 	free(head);
 	exit(EXIT_FAILURE);
 }
+
+void parser_line(ssize_t characters)
+{
+	if (characters == -1)
+	{
+		free(Var.linebuf);
+		fclose(Var.file);
+		exit(0);
+	}
+}

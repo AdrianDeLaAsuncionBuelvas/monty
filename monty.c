@@ -1,10 +1,15 @@
 #include "monty.h"
 
-int main(int ac __attribute__((unused)), char **av)
+int main(int ac, char **av)
 {
 	char *file;
-	file = readfile(av);
-	printf("Desde el Main %s\n", file);
+	file = av[1];
+	if (ac != 2)
+	{
+		dprintf(STDERR_FILENO, "USAGE: monty file\n");
+		exit(EXIT_FAILURE);
+	}
 
+	readfile(file);
 	return (0);
 }

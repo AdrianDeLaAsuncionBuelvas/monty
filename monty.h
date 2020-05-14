@@ -50,15 +50,18 @@ typedef struct glob_var_s
 
 extern glob_var_t Var;
 
-int main(int ac __attribute__((unused)), char **av);
-// ------------------ General Functions --------------------------- */
-char *readfile(char **av);
+/* ------------------ General Functions --------------------------- */
+int main(int ac, char **av);
+char *readfile(char *filename);
 char* stacki(char *buffer);
 char *func_parser(stack_t *head, unsigned int num);
-int get_functions(char **stack, unsigned int line_number);
-// -------------------- Errors Functions -------------------------
+int get_functions(stack_t **head, unsigned int line_number);
+
+/* -------------------- Errors Functions -------------------------*/
 void int_Error(stack_t *head, unsigned int line_number);
-// ------------------ Node Functions -----------------------------
+void parser_line(ssize_t characters);
+
+/* ------------------ Node Functions -----------------------------*/
 void func_code_push(stack_t **stack, unsigned int line_number);
 void func_code_pall(stack_t **stack, unsigned int line_number);
 

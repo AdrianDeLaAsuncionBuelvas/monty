@@ -5,7 +5,7 @@ glob_var_t Var;
 
 int get_functions(stack_t **head, unsigned int line_number)
 {
-	int i;
+	unsigned int i;
 
 	instruction_t func_code[] = {
 		{"push", func_code_push},

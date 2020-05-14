@@ -3,25 +3,18 @@ glob_var_t Var;
 
 char *func_parser(stack_t *head, unsigned int num)
 {
-	char *delim = "\n";
+	char *delim = " \n";
 	char *token = NULL, *array = NULL;
 	int i = 0;
-			 printf("son iguales");
 
-	 token = strtok(Var.linebuf, delim);
+	token = strtok(Var.linebuf, delim);
 	 if (token == NULL)
 		 return (NULL);
-	 if (strcmp(token, delim) == 0)
+	 if (strcmp(token, "push") == 0)
 	 {
 	        array = strtok(NULL, delim);
 		if (array == NULL)
 			int_Error(head, num);
-		/**array[i] = token;
-		 array = malloc(sizeof(head) + BUFFSIZE);
-	if(!array)
-	perror("Error: malloc failed"), exit(EXIT_FAILURE);
-
-	array[i] = token;*/
 
 	while (array[i])
 	{

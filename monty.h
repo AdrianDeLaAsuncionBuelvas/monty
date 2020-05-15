@@ -67,5 +67,6 @@ void check_instructions(unsigned int line_num);
 /* ------------------ Node Functions -----------------------------*/
 void func_code_push(stack_t **stack, unsigned int line_number);
 void func_code_pall(stack_t **stack, unsigned int line_number);
+void free_stacki(stack_t *head);
 
 #endif

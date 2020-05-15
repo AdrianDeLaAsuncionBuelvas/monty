@@ -1,7 +1,11 @@
 #include "monty.h"
 glob_var_t Var; /* Global Variable*/
 
-
+/**
+ *readfile - read file digited in console.
+ *@filename: Directory and name of file.
+ *Return: a pointer to a line of characters.
+ */
 
 int readfile(char *filename)
 {
@@ -13,7 +17,7 @@ int readfile(char *filename)
 
 	Var.linebuf = Var.sizbuf = NULL;
 
-	 Var.file = fopen(filename, "r");
+	Var.file = fopen(filename, "r");
 	if (!Var.file)
 	{
 		printf("Error: Can't open file %s\n", filename);

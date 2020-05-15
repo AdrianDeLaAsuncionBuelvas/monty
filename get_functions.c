@@ -1,6 +1,12 @@
 #include "monty.h"
 glob_var_t Var;
 
+/**
+*get_functions- gets the order on the file
+*@head: first elemet of the stack
+*@line_number: number of line.
+*Return: a integer
+*/
 
 
 int get_functions(stack_t **head, unsigned int line_number)
@@ -15,7 +21,7 @@ int get_functions(stack_t **head, unsigned int line_number)
 	i = 0;
 	if (Var.sizbuf[0] == '#')
 	{
-		//func_code[1].f(head, line_number);
+		/*func_code[1].f(head, line_number);*/
 		return (1);
 	}
 	while (i != 2)

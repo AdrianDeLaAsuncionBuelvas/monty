@@ -2,9 +2,9 @@
 glob_var_t Var;
 
 /**
- *func_code_push - Will data if the word is push.
- *@stack: stack that contain the data
- *@ln: received the number of de line
+ * func_code_push - Will data if the word is push.
+ * @stack: stack that contain the data
+ * @ln: received the number of de line
  */
 
 
@@ -38,9 +38,9 @@ void func_code_push(stack_t **stack, unsigned int ln __attribute__((unused)))
 }
 
 /**
- *func_code_pall - Will data if the word is pall.
- *@stack: stack that contain the data
- *@ln: received the number of de line
+ * func_code_pall - Will data if the word is pall.
+ * @stack: stack that contain the data
+ * @ln: received the number of de line
  */
 
 
@@ -60,4 +60,29 @@ void func_code_pall(stack_t **stack, unsigned int ln __attribute__((unused)))
 		node = node->next;
 		count++;
 	}
+}
+
+/**
+ * func_code_pop - removes the top element of the stack.
+ * @stack: stack that contain the data
+ * @ln: received the number of de line
+ */
+
+void func_code_pop(stack_t **stack, unsigned int ln)
+{
+	stack_t *node = *stack, *temp;
+
+	if (!node)
+	{
+		dprintf(STDERR_FILENO, "L%u: can't pop an empty stack", ln);
+		free_stacki(*stack);
+		exit(EXIT_FAILURE);
+	}
+	temp = node->next;
+	free(node);
+	*stack = temp;
+	node = *stack;
+
+	if (node)
+		node = node->next;
 }

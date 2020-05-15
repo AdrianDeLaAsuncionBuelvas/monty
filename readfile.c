@@ -2,30 +2,30 @@
 glob_var_t Var; /* Global Variable*/
 
 /**
-*readfile - read file digited in console.
-*@filename: Directory and name of file.
-*Return: a pointer to a line of characters.
-*/
+ *readfile - read file digited in console.
+ *@filename: Directory and name of file.
+ *Return: a pointer to a line of characters.
+ */
 
-char *readfile(char *filename)
+int readfile(char *filename)
 {
 	stack_t *head = NULL;
 	size_t buzsize = 0;
-	ssize_t characters;
+	ssize_t cha;
+	int check;
 	unsigned int count = 0;
 
 	Var.linebuf = Var.sizbuf = NULL;
 
-	Var.file = fopen(filename, "rb");
+	Var.file = fopen(filename, "r");
 	if (!Var.file)
 	{
 		printf("Error: Can't open file %s\n", filename);
 		exit(EXIT_FAILURE);
 	}
-
-	characters = getline(&Var.linebuf,  &buzsize, Var.file);
-	parser_line(characters);
-	while (characters >= 0)
+	cha = getline(&Var.linebuf,  &buzsize, Var.file);
+	parser_line(cha);
+	while (cha >= 0)
 	{
 		Var.sizbuf = NULL;
 		count++;
@@ -33,15 +33,17 @@ char *readfile(char *filename)
 
 		if (Var.linebuf == NULL)
 		{
-			characters = getline(&Var.linebuf, &buzsize, Var.file);
+			cha = getline(&Var.linebuf, &buzsize, Var.file);
 			continue;
 		}
-		get_functions(&head, count);
-		characters = getline(&Var.linebuf,  &buzsize, Var.file);
+		check = get_functions(&head, count);
+		check_opc_code(check, count, head);
+		cha = getline(&Var.linebuf,  &buzsize, Var.file);
 
 	}
-
+	free(Var.linebuf);
+	free_stacki(head);
 	fclose(Var.file);
-	return (Var.linebuf);
+	return (0);
 }
 

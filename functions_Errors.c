@@ -13,7 +13,7 @@ void int_Error(stack_t *head, unsigned int number)
 	free(Var.sizbuf);
 	fclose(Var.file);
 	free(Var.linebuf);
-	free(head);
+	free_stacki(head);
 	exit(EXIT_FAILURE);
 }
 

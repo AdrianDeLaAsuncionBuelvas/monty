@@ -2,10 +2,10 @@
 glob_var_t Var;
 
 /**
-*func_code_push - Will data if the word is push.
-*@stack: stack that contain the data
-*@line_number: received the number of de line
-*/
+ *func_code_push - Will data if the word is push.
+ *@stack: stack that contain the data
+ *@line_number: received the number of de line
+ */
 
 
 void func_code_push(stack_t **stack, unsigned int line_number)
@@ -16,7 +16,10 @@ void func_code_push(stack_t **stack, unsigned int line_number)
 	new = malloc(sizeof(stack_t));
 	if (!new)
 	{
-		free(*stack);
+		dprintf(STDERR_FILENO, "Error: malloc failed\n");
+		free(Var.linebuf);
+		fclose(Var.file);
+		free_stacki(*stack);
 		exit(EXIT_FAILURE);
 	}
 
@@ -32,13 +35,14 @@ void func_code_push(stack_t **stack, unsigned int line_number)
 
 	*stack = new;
 
+
 }
 
 /**
-*func_code_pall - Will data if the word is pall.
-*@stack: stack that contain the data
-*@line_number: received the number of de line
-*/
+ *func_code_pall - Will data if the word is pall.
+ *@stack: stack that contain the data
+ *@line_number: received the number of de line
+ */
 
 
 void func_code_pall(stack_t **stack, unsigned int line_number)

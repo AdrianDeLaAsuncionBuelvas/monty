@@ -9,7 +9,10 @@ void func_code_push(stack_t **stack, unsigned int line_number)
 	new = malloc(sizeof(stack_t));
 	if (!new)
 	{
-		free(*stack);
+		dprintf(STDERR_FILENO, "Error: malloc failed\n");
+		free(Var.linebuf);
+		fclose(Var.file);
+		free_stacki(*stack);
 		exit(EXIT_FAILURE);
 	}
 

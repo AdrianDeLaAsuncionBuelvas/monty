@@ -30,8 +30,7 @@ void parser_line(ssize_t characters)
 	{
 		free(Var.linebuf);
 		fclose(Var.file);
-		free(Var.sizbuf);
-		exit(EXIT_FAILURE);
+		exit(0);
 	}
 }
 
@@ -48,6 +47,8 @@ void check_opc_code(int line_check, unsigned int line_num, stack_t *head)
 	if (line_check == 0)
 	{
 		check_instructions(line_num);
+		free(Var.linebuf);
+		fclose(Var.file);
 		free_stacki(head);
 		exit(EXIT_FAILURE);
 	}

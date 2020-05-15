@@ -20,7 +20,7 @@ int readfile(char *filename)
 	Var.file = fopen(filename, "r");
 	if (Var.file == NULL)
 	{
-		printf("Error: Can't open file %s\n", filename);
+		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", filename);
 		exit(EXIT_FAILURE);
 	}
 	cha = getline(&Var.linebuf,  &buzsize, Var.file);

@@ -4,7 +4,7 @@ glob_var_t Var;
 /**
  *func_code_push - Will data if the word is push.
  *@stack: stack that contain the data
- *@line_number: received the number of de line
+ *@ln: received the number of de line
  */
 
 
@@ -40,7 +40,7 @@ void func_code_push(stack_t **stack, unsigned int ln __attribute__((unused)))
 /**
  *func_code_pall - Will data if the word is pall.
  *@stack: stack that contain the data
- *@line_number: received the number of de line
+ *@ln: received the number of de line
  */
 
 

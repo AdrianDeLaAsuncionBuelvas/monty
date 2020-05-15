@@ -26,11 +26,6 @@ char *func_parser(stack_t *head, unsigned int num)
 
 		while (array[i])
 		{
-			if (i == 0 && array[i] == '-')
-			{
-				i++;
-				continue;
-			}
 			if (array[i] >= 48 && array[i] <= 57)
 			{
 				i++;
@@ -44,6 +39,5 @@ char *func_parser(stack_t *head, unsigned int num)
 		}
 		Var.node_num = atoi(array);
 	}
-
 	return (token);
 }

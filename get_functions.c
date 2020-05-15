@@ -2,16 +2,16 @@
 glob_var_t Var;
 
 /**
-*get_functions- gets the order on the file
-*@head: first elemet of the stack
-*@line_number: number of line.
-*Return: a integer
-*/
+ *get_functions- gets the order on the file
+ *@head: first elemet of the stack
+ *@line_number: number of line.
+ *Return: a integer
+ */
 
 
 int get_functions(stack_t **head, unsigned int line_number)
 {
-	unsigned int i;
+	int i;
 
 	instruction_t func_code[] = {
 		{"push", func_code_push},
@@ -19,11 +19,7 @@ int get_functions(stack_t **head, unsigned int line_number)
 		{NULL, NULL}
 	};
 	i = 0;
-	if (Var.sizbuf[0] == '#')
-	{
-		/*func_code[1].f(head, line_number);*/
-		return (1);
-	}
+
 	while (i != 2)
 	{
 		if (!(strcmp(func_code[i].opcode, Var.sizbuf)))

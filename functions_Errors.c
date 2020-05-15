@@ -31,7 +31,7 @@ void parser_line(ssize_t characters)
 		free(Var.linebuf);
 		fclose(Var.file);
 		free(Var.sizbuf);
-		exit(0);
+		exit(EXIT_FAILURE);
 	}
 }
 

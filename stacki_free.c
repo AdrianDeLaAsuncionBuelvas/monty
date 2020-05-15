@@ -2,7 +2,6 @@
 glob_var_t Var;
 
 /**
-
 * free_stacki - free Node in the head
 * @head: node to free
 */

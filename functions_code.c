@@ -8,10 +8,9 @@ glob_var_t Var;
  */
 
 
-void func_code_push(stack_t **stack, unsigned int line_number)
+void func_code_push(stack_t **stack, unsigned int ln __attribute__((unused)))
 {
 	stack_t *new;
-	(void)line_number;
 
 	new = malloc(sizeof(stack_t));
 	if (!new)
@@ -45,11 +44,10 @@ void func_code_push(stack_t **stack, unsigned int line_number)
  */
 
 
-void func_code_pall(stack_t **stack, unsigned int line_number)
+void func_code_pall(stack_t **stack, unsigned int ln __attribute__((unused)))
 {
 	stack_t *node = *stack;
 	size_t count = 0;
-	(void)line_number;
 
 	if (!stack)
 	{

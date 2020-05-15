@@ -18,9 +18,9 @@
  */
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
 } stack_t;
 
 
@@ -35,11 +35,18 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-        char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
+	char *opcode;
+	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-// Global Variable
+/**
+ * struct glob_var_s - Global Variable for data
+ * @file: contain the data file
+ * @linebuf: contain line of file
+ * @sizbuf: contain size of file
+ * @node_num: node number to add
+ *
+ */
 typedef struct glob_var_s
 {
 	FILE *file;
@@ -53,7 +60,7 @@ extern glob_var_t Var;
 /* ------------------ General Functions --------------------------- */
 int main(int ac, char **av);
 int readfile(char *filename);
-char* stacki(char *buffer);
+char *stacki(char *buffer);
 char *func_parser(stack_t *head, unsigned int num);
 int get_functions(stack_t **head, unsigned int line_number);
 void free_stacki(stack_t *head);
@@ -65,8 +72,8 @@ void check_opc_code(int line_check, unsigned int line_num, stack_t *head);
 void check_instructions(unsigned int line_num);
 
 /* ------------------ Node Functions -----------------------------*/
-void func_code_push(stack_t **stack, unsigned int line_number);
-void func_code_pall(stack_t **stack, unsigned int line_number);
+void func_code_push(stack_t **stack, unsigned int ln __attribute__((unused)));
+void func_code_pall(stack_t **stack, unsigned int ln __attribute__((unused)));
 void free_stacki(stack_t *head);
 
 #endif

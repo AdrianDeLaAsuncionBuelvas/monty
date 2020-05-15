@@ -18,31 +18,31 @@ int readfile(char *filename)
 	Var.linebuf = Var.sizbuf = NULL;
 
 	Var.file = fopen(filename, "r");
-	if (!Var.file)
+	if (Var.file == NULL)
 	{
 		printf("Error: Can't open file %s\n", filename);
 		exit(EXIT_FAILURE);
 	}
-		cha = getline(&Var.linebuf,  &buzsize, Var.file);
-	        parser_line(cha);
-		while (cha >= 0)
+	cha = getline(&Var.linebuf,  &buzsize, Var.file);
+	parser_line(cha);
+	while (cha >= 0)
+	{
+		Var.sizbuf = NULL;
+		count++;
+		Var.sizbuf = func_parser(head, count);
+
+		if (Var.linebuf == NULL)
 		{
-			Var.sizbuf = NULL;
-			count++;
-			Var.sizbuf = func_parser(head, count);
-			//stacki(buffer); /*aca se envia la cadena a una funcion para procesar la cadena*/
-			if (Var.linebuf == NULL)
-			{
-				cha = getline(&Var.linebuf, &buzsize, Var.file);
-				continue;
-			}
-			check = get_functions(&head, count);
-			check_opc_code(check, count, head);
-			cha = getline(&Var.linebuf,  &buzsize, Var.file);
+			cha = getline(&Var.linebuf, &buzsize, Var.file);
+			continue;
+		}
+		check = get_functions(&head, count);
+		check_opc_code(check, count, head);
+		cha = getline(&Var.linebuf,  &buzsize, Var.file);
 
 	}
-		free(Var.linebuf);
-		free_stacki(head);
-		fclose(Var.file);
+	free(Var.sizbuf);
+	free_stacki(head);
+	fclose(Var.file);
 	return (0);
 }

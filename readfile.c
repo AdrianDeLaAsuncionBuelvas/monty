@@ -31,7 +31,7 @@ int readfile(char *filename)
 		count++;
 		Var.sizbuf = func_parser(head, count);
 
-		if (Var.linebuf == NULL)
+		if (Var.sizbuf == NULL)
 		{
 			cha = getline(&Var.linebuf, &buzsize, Var.file);
 			continue;

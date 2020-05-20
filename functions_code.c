@@ -63,6 +63,29 @@ void func_code_pall(stack_t **stack, unsigned int ln __attribute__((unused)))
 }
 
 /**
+ * func_code_pint -  prints the value at the top of the stack.
+ * @stack: stack that contain the data
+ * @ln: received the number of de line
+ */
+
+void func_code_pint(stack_t **stack, unsigned int ln)
+{
+	stack_t *node = *stack;
+
+	if (node)
+	{
+		printf("%d\n", node->n);
+	}
+	else
+	{
+		dprintf(STDERR_FILENO, "L%u: can't pint, stack empty", ln);
+		free_stacki(*stack);
+		exit(EXIT_FAILURE);
+	}
+
+}
+
+/**
  * func_code_pop - removes the top element of the stack.
  * @stack: stack that contain the data
  * @ln: received the number of de line

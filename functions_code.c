@@ -86,3 +86,22 @@ void func_code_pop(stack_t **stack, unsigned int ln)
 	if (node)
 		node = node->next;
 }
+
+/**
+ * _pint - prints the value at the top of the stack, followed by a new line
+ * @stack: stack
+ * @line_number: line number
+ */
+
+void _pint(stack_t **stack, unsigned int ln)
+{
+	if (!stack || !*stack)
+	{
+		printf("L%u: can't pint, stack empty\n", ln);
+		free_stacki(*stack);
+		free(stack);
+		exit(EXIT_FAILURE);
+	}
+
+	printf("%d\n", (*stack)->n);
+}

@@ -68,23 +68,22 @@ void func_code_pall(stack_t **stack, unsigned int ln __attribute__((unused)))
  * @ln: received the number of de line
  */
 
-void func_code_pop(stack_t **stack, unsigned int ln)
+void _pop(stack_t **stack, unsigned int ln)
 {
-	stack_t *node = *stack, *temp;
+	stack_t *node = *stack;
 
-	if (!node)
+	if (stack == NULL || *stack == NULL)
 	{
-		dprintf(STDERR_FILENO, "L%u: can't pop an empty stack", ln);
+		printf("L%u: can't pop an empty stack\n", ln);
 		free_stacki(*stack);
+		free(stack);
 		exit(EXIT_FAILURE);
 	}
-	temp = node->next;
-	free(node);
-	*stack = temp;
-	node = *stack;
 
-	if (node)
-		node = node->next;
+	*stack = node->next;
+	if (*stack != NULL)
+		(*stack)->prev = NULL;
+	free(node);
 }
 
 /**
@@ -105,3 +104,4 @@ void _pint(stack_t **stack, unsigned int ln)
 
 	printf("%d\n", (*stack)->n);
 }
+

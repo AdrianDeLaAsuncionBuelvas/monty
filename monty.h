@@ -75,7 +75,7 @@ void check_instructions(unsigned int line_num);
 void func_code_push(stack_t **stack, unsigned int ln __attribute__((unused)));
 void func_code_pall(stack_t **stack, unsigned int ln __attribute__((unused)));
 void free_stacki(stack_t *head);
-void func_code_pop(stack_t **stack, unsigned int ln);
 void _pint(stack_t **stack, unsigned int ln);
+void _pop(stack_t **stack, unsigned int ln);
 
 #endif

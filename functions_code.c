@@ -73,11 +73,9 @@ void func_code_pop(stack_t **stack, unsigned int ln __attribute__((unused)))
 {
 	stack_t *node = *stack;
 
-	if (stack == NULL || *stack == NULL)
+	if (!*stack)
 	{
 		printf("L%u: can't pop an empty stack\n", ln);
-		free_stacki(*stack);
-		free(stack);
 		exit(EXIT_FAILURE);
 	}
 
@@ -95,14 +93,15 @@ void func_code_pop(stack_t **stack, unsigned int ln __attribute__((unused)))
 
 void func_code_pint(stack_t **stack, unsigned int ln)
 {
+	stack_t *node = *stack;
 
-	if (!*stack)
+	if (node)
 	{
-		printf("L%u: can't pint, stack empty\n", ln);
-		exit(EXIT_FAILURE);
+		printf("%d\n", node->n);
 	}
 	else
 	{
-	printf("%d\n", (*stack)->n);
+		printf("L%u: can't pint, stack empty\n", ln);
+		exit(EXIT_FAILURE);
 	}
 }

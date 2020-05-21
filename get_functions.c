@@ -23,7 +23,7 @@ int get_functions(stack_t **head, unsigned int line_number)
 
 	i = 0;
 
-	while (i != 5)
+	while (i != 4)
 	{
 		if (!(strcmp(func_code[i].opcode, Var.sizbuf)))
 		{
@@ -33,7 +33,7 @@ int get_functions(stack_t **head, unsigned int line_number)
 
 		i++;
 	}
-	if (i == 5)
+	if (i == 4)
 		return (0);
 
 	return (1);

@@ -92,7 +92,7 @@ void _pop(stack_t **stack, unsigned int ln __attribute__((unused)))
  * @line_number: line number
  */
 
-void _pint(stack_t **stack, unsigned int ln __attribute__((unused)))
+void _pint(stack_t **stack, unsigned int ln)
 {
 
 	if (!stack || !*stack)

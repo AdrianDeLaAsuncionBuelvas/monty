@@ -20,6 +20,7 @@ int get_functions(stack_t **head, unsigned int line_number)
 		{"pall", func_code_pall},
 		{NULL, NULL}
 	};
+
 	i = 0;
 
 	while (i != 4)
@@ -29,6 +30,7 @@ int get_functions(stack_t **head, unsigned int line_number)
 			func_code[i].f(head, line_number);
 			break;
 		}
+
 		i++;
 	}
 	if (i == 4)

@@ -68,7 +68,7 @@ void func_code_pall(stack_t **stack, unsigned int ln __attribute__((unused)))
  * @ln: received the number of de line
  */
 
-void _pop(stack_t **stack, unsigned int ln)
+void _pop(stack_t **stack, unsigned int ln __attribute__((unused)))
 {
 	stack_t *node = *stack;
 
@@ -92,8 +92,9 @@ void _pop(stack_t **stack, unsigned int ln)
  * @line_number: line number
  */
 
-void _pint(stack_t **stack, unsigned int ln)
+void _pint(stack_t **stack, unsigned int ln __attribute__((unused)))
 {
+
 	if (!stack || !*stack)
 	{
 		printf("L%u: can't pint, stack empty\n", ln);
@@ -104,4 +105,3 @@ void _pint(stack_t **stack, unsigned int ln)
 
 	printf("%d\n", (*stack)->n);
 }
-

@@ -13,7 +13,8 @@ int get_functions(stack_t **head, unsigned int line_number)
 {
 	int i;
 
-	instruction_t func_code[] = {	
+	instruction_t func_code[] = {
+		{"swap", _swap},	
 		{"pop", _pop},
 		{"pint", _pint},
 		{"push", func_code_push},

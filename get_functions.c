@@ -14,25 +14,27 @@ int get_functions(stack_t **head, unsigned int line_number)
 	int i;
 
 	instruction_t func_code[] = {
-		{"pint", _pint},
+		{"swap", _swap},
+		{"pop", func_code_pop},
+		{"pint", func_code_pint},
 		{"push", func_code_push},
 		{"pall", func_code_pall},
-		{"pint", func_code_pint},
-		{"pop", func_code_pop},
 		{NULL, NULL}
 	};
+
 	i = 0;
 
-	while (i != 4)
+	while (i != 5)
 	{
 		if (!(strcmp(func_code[i].opcode, Var.sizbuf)))
 		{
 			func_code[i].f(head, line_number);
 			break;
 		}
+
 		i++;
 	}
-	if (i == 4)
+	if (i == 5)
 		return (0);
 
 	return (1);

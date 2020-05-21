@@ -62,5 +62,5 @@ void check_opc_code(int line_check, unsigned int line_num, stack_t *head)
 
 void check_instructions(unsigned int ln)
 {
-	dprintf(STDERR_FILENO, "L%u: unknown instruction %s\n", ln, Var.sizbuf);
+	dprintf(STDERR_FILENO, "L%u: unknown instructionnn %s\n", ln, Var.sizbuf);
 }

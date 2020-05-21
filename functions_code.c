@@ -62,6 +62,31 @@ void func_code_pall(stack_t **stack, unsigned int ln __attribute__((unused)))
 	}
 }
 
+
+/**
+ * func_code_pop - removes the top element of the stack.
+ * @stack: stack that contain the data
+ * @ln: received the number of de line
+ */
+
+void func_code_pop(stack_t **stack, unsigned int ln __attribute__((unused)))
+{
+	stack_t *node = *stack;
+
+	if (stack == NULL || *stack == NULL)
+	{
+		printf("L%u: can't pop an empty stack\n", ln);
+		free_stacki(*stack);
+		free(stack);
+		exit(EXIT_FAILURE);
+	}
+
+	*stack = node->next;
+	if (*stack != NULL)
+		(*stack)->prev = NULL;
+	free(node);
+}
+
 /**
  * func_code_pint -  prints the value at the top of the stack.
  * @stack: stack that contain the data
@@ -70,61 +95,14 @@ void func_code_pall(stack_t **stack, unsigned int ln __attribute__((unused)))
 
 void func_code_pint(stack_t **stack, unsigned int ln)
 {
-	stack_t *node = *stack;
 
-	if (node)
+	if (!*stack)
 	{
-		printf("%d\n", node->n);
+		printf("L%u: can't pint, stack empty\n", ln);
+		exit(EXIT_FAILURE);
 	}
 	else
 	{
-		dprintf(STDERR_FILENO, "L%u: can't pint, stack empty", ln);
-		free_stacki(*stack);
-		exit(EXIT_FAILURE);
-	}
-
-}
-
-/**
- * func_code_pop - removes the top element of the stack.
- * @stack: stack that contain the data
- * @ln: received the number of de line
- */
-
-void func_code_pop(stack_t **stack, unsigned int ln)
-{
-	stack_t *node = *stack, *temp;
-
-	if (!node)
-	{
-		dprintf(STDERR_FILENO, "L%u: can't pop an empty stack", ln);
-		free_stacki(*stack);
-		exit(EXIT_FAILURE);
-	}
-	temp = node->next;
-	free(node);
-	*stack = temp;
-	node = *stack;
-
-	if (node)
-		node = node->next;
-}
-
-/**
- * _pint - prints the value at the top of the stack, followed by a new line
- * @stack: stack
- * @line_number: line number
- */
-
-void _pint(stack_t **stack, unsigned int ln)
-{
-	if (!stack || !*stack)
-	{
-		printf("L%u: can't pint, stack empty\n", ln);
-		free_stacki(*stack);
-		free(stack);
-		exit(EXIT_FAILURE);
-	}
-
 	printf("%d\n", (*stack)->n);
+	}
 }

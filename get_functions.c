@@ -14,7 +14,6 @@ int get_functions(stack_t **head, unsigned int line_number)
 	int i;
 
 	instruction_t func_code[] = {	
-		{"pop", _pop},
 		{"pint", _pint},
 		{"push", func_code_push},
 		{"pall", func_code_pall},

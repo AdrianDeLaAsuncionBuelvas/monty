@@ -68,30 +68,6 @@ void func_code_pall(stack_t **stack, unsigned int ln __attribute__((unused)))
  * @ln: received the number of de line
  */
 
-void _pop(stack_t **stack, unsigned int ln __attribute__((unused)))
-{
-	stack_t *node = *stack;
-
-	if (stack == NULL || *stack == NULL)
-	{
-		printf("L%u: can't pop an empty stack\n", ln);
-		free_stacki(*stack);
-		free(stack);
-		exit(EXIT_FAILURE);
-	}
-
-	*stack = node->next;
-	if (*stack != NULL)
-		(*stack)->prev = NULL;
-	free(node);
-}
-
-/**
- * _pint - prints the value at the top of the stack, followed by a new line
- * @stack: stack
- * @line_number: line number
- */
-
 void _pint(stack_t **stack, unsigned int ln)
 {
 

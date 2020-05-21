@@ -14,6 +14,7 @@ int get_functions(stack_t **head, unsigned int line_number)
 	int i;
 
 	instruction_t func_code[] = {	
+		{"pop", _pop},
 		{"pint", _pint},
 		{"push", func_code_push},
 		{"pall", func_code_pall},
@@ -22,7 +23,7 @@ int get_functions(stack_t **head, unsigned int line_number)
 
 	i = 0;
 
-	while (i != 4)
+	while (i != 5)
 	{
 		if (!(strcmp(func_code[i].opcode, Var.sizbuf)))
 		{
@@ -32,7 +33,7 @@ int get_functions(stack_t **head, unsigned int line_number)
 
 		i++;
 	}
-	if (i == 4)
+	if (i == 5)
 		return (0);
 
 	return (1);

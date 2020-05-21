@@ -14,11 +14,11 @@ int get_functions(stack_t **head, unsigned int line_number)
 	int i;
 
 	instruction_t func_code[] = {
-		{"swap", _swap},
-		{"pop", func_code_pop},
-		{"pint", func_code_pint},
 		{"push", func_code_push},
 		{"pall", func_code_pall},
+		{"pint", func_code_pint},
+		{"pop", func_code_pop},
+		{"swap", _swap},
 		{NULL, NULL}
 	};
 

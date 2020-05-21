@@ -47,7 +47,6 @@ void func_code_push(stack_t **stack, unsigned int ln __attribute__((unused)))
 void func_code_pall(stack_t **stack, unsigned int ln __attribute__((unused)))
 {
 	stack_t *node = *stack;
-	size_t count = 0;
 
 	if (!stack)
 	{
@@ -58,7 +57,6 @@ void func_code_pall(stack_t **stack, unsigned int ln __attribute__((unused)))
 	{
 		printf("%d\n", node->n);
 		node = node->next;
-		count++;
 	}
 }
 
@@ -75,7 +73,7 @@ void func_code_pop(stack_t **stack, unsigned int ln __attribute__((unused)))
 
 	if (!*stack)
 	{
-		printf("L%u: can't pop an empty stack\n", ln);
+		dprintf(STDERR_FILENO, "L%u: can't pop an empty stack\n", ln);
 		exit(EXIT_FAILURE);
 	}
 
@@ -101,7 +99,7 @@ void func_code_pint(stack_t **stack, unsigned int ln)
 	}
 	else
 	{
-		printf("L%u: can't pint, stack empty\n", ln);
+		dprintf(STDERR_FILENO, "L%u: can't pint, stack empty\n", ln);
 		exit(EXIT_FAILURE);
 	}
 }
